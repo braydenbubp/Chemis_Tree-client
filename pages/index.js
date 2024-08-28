@@ -10,7 +10,7 @@ function Home() {
       style={{
         height: '90vh',
         padding: '30px',
-        maxWidth: '400px',
+        maxWidth: '500px',
         margin: '0 auto',
       }}
     >
