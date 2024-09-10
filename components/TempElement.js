@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
 export default function TempElement({
-  elementObj, onClick, isSelected, isCompoundMode,
+  elementObj, onClick, isCompoundMode, selectElements,
 }) {
   const handleClick = (e) => {
     if (isCompoundMode) {
@@ -14,6 +14,8 @@ export default function TempElement({
       onClick(elementObj);
     }
   };
+
+  const elementCount = selectElements[elementObj.id]?.count || 0;
 
   return (
     <>
@@ -23,9 +25,12 @@ export default function TempElement({
       </div> */}
       <>
         <Link href={`/element/${elementObj.id}`} passHref>
-          <Button id="view-btn" onClick={handleClick} className={`element ${elementObj.group} ${elementObj.symbol} ${isSelected ? 'selected' : ''}`}>
+          <Button id="view-btn" onClick={handleClick} className={`element ${elementObj.group} ${elementObj.symbol} ${elementCount > 0 ? 'selected' : ''}`}>
             <span className="element-symbol">{elementObj.symbol}</span>
             <span className="element-name">{elementObj.name}</span>
+            {isCompoundMode && elementCount > 0 && (
+              <span className="element-count">{elementCount}</span>
+            )}
           </Button>
         </Link>
       </>
