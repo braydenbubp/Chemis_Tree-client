@@ -20,3 +20,206 @@ a {
 body {
   background-color: #88effd;
 }
+
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+#table {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 2px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 100px;
+  margin-left: -100px;
+} 
+
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  max-width: 100px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.element-symbol {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.element-name {
+  font-size: 1rem;
+}
+
+.element.selected {
+  background-color: yellow;
+  border: 2px solid black;
+}
+
+.Nonmetal {
+  background-color: #ee1115;
+}
+
+.Alkaline {
+  background-color: #530743;
+  grid-column: 2;
+}
+
+.Lanthanide {
+  background-color: #63abf8;
+  grid-row: 11;
+}
+
+.Noble {
+  background-color: #e0d429;
+  grid-column: 18;
+}
+
+.Transition {
+  background-color: #cc00ff;
+}
+
+.Metalloid {
+  background-color: #18f818;
+}
+
+.Post-Transition {
+  background-color: #f89e18;
+}
+
+.Halogen {
+  background-color: #18f8f8;
+}
+
+.Alkali {
+  background-color: #f818c8;
+  grid-column: 1;
+}
+
+.Actinide {
+  background-color: #023774;
+  grid-column: span 1;
+  grid-row: 12;
+}
+
+.B {
+  grid-column: 13;
+  grid-row: 2;
+}
+
+.Al {
+  grid-column: 13;
+  grid-row: 3;
+}
+
+.Si {
+  grid-column: 14;
+  grid-row: 3;
+}
+
+.Ge {
+  grid-column: 14;
+  grid-row: 4;
+}
+
+.As {
+  grid-column: 15;
+  grid-row: 4;
+}
+
+.Sb {
+  grid-column: 15;
+  grid-row: 5;
+}
+
+.Bi {
+  grid-column: 15;
+}
+
+.Pb {
+  grid-column: 14;
+  grid-row: 6;
+}
+
+.Tl {
+  grid-column: 13;
+  grid-row: 6;
+}
+
+.Te {
+  grid-column: 16;
+  grid-row: 5;
+}
+
+.Po {
+  grid-column: 16;
+}
+
+.Lv {
+  grid-column: 16;
+}
+
+.Mc {
+  grid-column: 15;
+}
+
+.Fl {
+  grid-column: 14;
+}
+
+.Nh {
+  grid-column: 13;
+}
+
+.C {
+  grid-column: 14;
+  grid-row: 2;
+}
+
+.N {
+  grid-column: 15;
+  grid-row: 2;
+}
+
+.O {
+  grid-column: 16;
+  grid-row: 2;
+}
+
+.F {
+  grid-column: 17;
+  grid-row: 2;
+}
+
+.P {
+  grid-column: 15;
+  grid-row: 3;
+}
+
+.S {
+  grid-column: 16;
+  grid-row: 3;
+}
+
+.Cl {
+  grid-column: 17;
+  grid-row: 3;
+}
+
+.At {
+  grid-column: 17;
+  grid-row: 6;
+}
+
+.Ts {
+  grid-column: 17;
+  grid-row: 7;
+}
