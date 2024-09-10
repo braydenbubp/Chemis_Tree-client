@@ -14,7 +14,7 @@ export default function PeriodicTable({ onElementClick, selectElements, isCompou
     getTheElements();
   }, []);
 
-  const isElementSelected = (element) => selectElements.some((el) => el.id === element.id);
+  // const isElementSelected = (element) => selectElements.some((el) => el.id === element.id);
 
   return (
     <div id="container">
@@ -25,7 +25,7 @@ export default function PeriodicTable({ onElementClick, selectElements, isCompou
             elementObj={element}
             onUpdate={getTheElements}
             onClick={() => onElementClick(element)}
-            isSelected={isElementSelected(element)}
+            selectElements={selectElements}
             isCompoundMode={isCompoundMode}
             style={{
               gridColumn: element.group,

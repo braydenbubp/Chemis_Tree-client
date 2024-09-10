@@ -8,7 +8,7 @@ import { useAuth } from '../utils/context/authContext';
 function Home() {
   const [isCompoundMode, setIsCompoundMode] = useState(false);
   const [singleElement, setSingleElement] = useState(null);
-  const [selectElements, setSelectElements] = useState([]);
+  const [selectElements, setSelectElements] = useState({});
 
   const router = useRouter();
   const { user } = useAuth();
@@ -16,19 +16,40 @@ function Home() {
   const handleElementClick = (element) => {
     if (isCompoundMode) {
       setSelectElements((prev) => {
-        if (prev.find((el) => el.id === element.id)) {
-          return prev.filter((el) => el.id !== element.id);
+        const newSelected = { ...prev };
+        if (newSelected[element.id]) {
+          newSelected[element.id] = {
+            ...newSelected[element.id],
+            count: newSelected[element.id].count + 1,
+          };
+        } else {
+          newSelected[element.id] = { ...element, count: 1 };
         }
-        return [...prev, element];
+        return newSelected;
       });
     } else {
       setSingleElement(element);
     }
   };
 
+  const removeElement = (elementId) => {
+    setSelectElements((prev) => {
+      const newSelected = { ...prev };
+      if (newSelected[elementId] && newSelected[elementId].count > 1) {
+        newSelected[elementId] = {
+          ...newSelected[elementId],
+          count: newSelected[elementId].count - 1,
+        };
+      } else {
+        delete newSelected[elementId];
+      }
+      return newSelected;
+    });
+  };
+
   const toggleCompoundMode = () => {
     setIsCompoundMode(!isCompoundMode);
-    setSelectElements([]);
+    setSelectElements({});
     setSingleElement(null);
   };
 
@@ -36,7 +57,7 @@ function Home() {
     e.preventDefault();
 
     const payload = {
-      includeElements: selectElements.map((el) => el.symbol),
+      includeElements: Object.values(selectElements).flatMap((el) => Array(el.count).fill(el.symbol)),
       user: user.uid,
     };
 
@@ -47,7 +68,7 @@ function Home() {
     if (isCompoundMode) {
       return selectElements;
     } if (singleElement) {
-      return [singleElement];
+      return { [singleElement]: { ...singleElement, count: 1 } };
     }
     return [];
   }, [isCompoundMode, selectElements, singleElement]);
@@ -59,7 +80,7 @@ function Home() {
       </Button>
       <>
         {isCompoundMode && (
-        <Button onClick={handleSubmit} disabled={selectElements.length < 2}>
+        <Button onClick={handleSubmit} disabled={Object.keys(selectElements).length < 2}>
           Create Compound
         </Button>
         )}
@@ -75,8 +96,10 @@ function Home() {
           <>
             <h2>Selected Elements</h2>
             <ul>
-              {selectElements.map((el) => (
-                <li key={el.id}>{el.symbol}</li>
+              {Object.entries(selectElements).map(([id, el]) => (
+                <li key={id}>{el.symbol} (x{el.count})
+                  <Button onClick={() => removeElement(parseInt(id, 10))}>Remove</Button>
+                </li>
               ))}
             </ul>
           </>
