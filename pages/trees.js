@@ -17,13 +17,16 @@ export default function Trees() {
   }, []);
 
   return (
-    <div>
-      <Button onClick={() => { router.push('/tree/new'); }}>
-        Create a new Tree
-      </Button>
-      {trees.map((tree) => (
-        <TreeCard key={tree.id} treeObj={tree} onUpdate={getUserTrees} />
-      ))}
-    </div>
+    <>
+      <h1>Create trees to connect compounds in various ways</h1>
+      <div>
+        <Button onClick={() => { router.push('/tree/new'); }}>
+          Create a new Tree
+        </Button>
+        {trees.map((tree) => (
+          <TreeCard key={tree.id} treeObj={tree} onUpdate={getUserTrees} />
+        ))}
+      </div>
+    </>
   );
 }
