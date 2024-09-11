@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
-import { getAllCompounds } from '../api/compounds';
+import { getCompoundsByUser } from '../api/compounds';
 import CompoundCard from '../components/CompoundCard';
+import { useAuth } from '../utils/context/authContext';
 
 export default function Compounds() {
   const [compounds, setCompounds] = useState([]);
 
+  const { user } = useAuth();
+
   const getCompounds = () => {
-    getAllCompounds().then(setCompounds);
+    getCompoundsByUser(user.uid).then(setCompounds);
   };
 
   useEffect(() => {
     getCompounds();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
       {compounds.map((compound) => (
-        <CompoundCard key={compound.id} compoundObj={compound} onUpdate={getAllCompounds} />
+        <CompoundCard key={compound.id} compoundObj={compound} onUpdate={getCompounds} />
       ))}
     </div>
   );

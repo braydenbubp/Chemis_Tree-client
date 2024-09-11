@@ -37,8 +37,8 @@ const createTree = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateTree = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/trees/${payload.id}`, {
+const updateTree = (treeId, payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/trees/${treeId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

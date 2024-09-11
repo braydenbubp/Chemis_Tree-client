@@ -12,6 +12,18 @@ const getAllCompounds = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCompoundsByUser = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/compounds?uid=${uid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 const getSingleCompound = (id) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/compounds/${id}`, {
     method: 'GET',
@@ -66,4 +78,5 @@ export {
   createCompound,
   updateCompound,
   deleteCompound,
+  getCompoundsByUser,
 };
