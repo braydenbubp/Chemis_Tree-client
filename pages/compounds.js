@@ -4,7 +4,6 @@ import CompoundCard from '../components/CompoundCard';
 
 export default function Compounds() {
   const [compounds, setCompounds] = useState([]);
-  console.warn(compounds);
 
   const getCompounds = () => {
     getAllCompounds().then(setCompounds);
