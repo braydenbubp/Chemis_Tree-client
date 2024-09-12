@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { getAllElements } from '../api/elements';
-import TempElement from './TempElement';
+import ElementCard from './ElementCard';
 
 export default function PeriodicTable({ onElementClick, selectElements, isCompoundMode }) {
   const [elements, setElements] = useState([]);
@@ -14,13 +14,11 @@ export default function PeriodicTable({ onElementClick, selectElements, isCompou
     getTheElements();
   }, []);
 
-  // const isElementSelected = (element) => selectElements.some((el) => el.id === element.id);
-
   return (
     <div id="container">
       <div id="table">
         {elements.map((element) => (
-          <TempElement
+          <ElementCard
             key={element.id}
             elementObj={element}
             onUpdate={getTheElements}
