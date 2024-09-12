@@ -24,6 +24,7 @@ export default function ElementDetail({ elementId }) {
       <h1>{element?.symbol}</h1>
       <h2>Atomic mass: {element?.mass}</h2>
       <h2>{element?.group}</h2>
+      <a href={element?.link}>For more details on {element?.name}, go here!</a>
     </div>
   );
 }
