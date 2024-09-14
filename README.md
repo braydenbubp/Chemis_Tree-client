@@ -1,9 +1,9 @@
-# React/Next.js Django Auth Template
+#### Chemis-Tree
 
-## Topics
-- [Get Started](#getting-started)
-- [Starting the Project](#starting-the-project)
-___
+Chemis-Tree is an app to make learning about chemistry more fun, and reach a bigger audience as its such an important study to our everyday lives
+
+
+
 ## Getting Started
 ### Use Template
 #### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
@@ -26,19 +26,4 @@ ___
 1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
 1. Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-### If you see this, you are set to go!
-<img width="450" alt="Screen Shot 2022-07-06 at 1 07 27 PM" src="https://user-images.githubusercontent.com/29741570/177615077-9b6a75bc-0260-4d29-bb88-bd95a3140687.png">
 
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-**NOTES:** 
-- If you see the following error, you did not follow all the setup steps correctly and failed to add your Firebase creds. Go back and do that NOW.
-
-<img width="1043" alt="Screen Shot 2022-07-06 at 11 18 45 AM" src="https://user-images.githubusercontent.com/29741570/177612501-c2628f18-4bbd-4de9-aae6-27ffba1172d6.png">
-        
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
