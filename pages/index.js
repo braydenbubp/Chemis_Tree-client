@@ -66,7 +66,6 @@ function Home() {
     };
 
     createCompound(payload).then(() => router.push('/compounds')).catch((error) => {
-      console.warn(error.message);
       if (error.message && error.message.includes('Unexpected token')) {
         setErrorMessage('This compound does not exist, try making another!');
       } else if (error.response) {
