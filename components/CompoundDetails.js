@@ -41,7 +41,6 @@ export default function CompoundDetail({ compoundId }) {
       const descriptionRecord = descriptionSection?.Section.find((section) => section.TOCHeading === 'Record Description');
       setDescription(descriptionRecord?.Information[0]?.Value?.StringWithMarkup[0]?.String || 'No description available.');
     } catch (err) {
-      console.warn(err);
       setDescription('Failed to load description.');
     }
   };
@@ -54,8 +53,6 @@ export default function CompoundDetail({ compoundId }) {
       if (data.cid) {
         await getCidData(data.cid);
         await getDescription(data.cid);
-      } else {
-        console.warn('No CID available for this compound');
       }
     } catch (error) {
       console.error('Failed to fetch', error);
