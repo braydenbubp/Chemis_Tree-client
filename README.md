@@ -1,7 +1,16 @@
 #### Chemis-Tree
 
 Chemis-Tree is an app to make learning about chemistry more fun, and reach a bigger audience as its such an important study to our everyday lives
+Deployed app - 
+Project Board - https://github.com/users/braydenbubp/projects/8/views/1
 
+A sample user will look like {id: 1, name: "name", uid: "auth key"} And that user will be able to -
+
+  1. Query by elements in the periodic table
+  2. Create compounds by adding elements, and getting detailed info on that compound
+  3. Create trees, and add compounds to those trees based on criteria the user decides
+
+Loom video of PostMan docs - https://www.loom.com/share/588575fe2fc842c08eda1c3163328856
 
 
 ## Getting Started
