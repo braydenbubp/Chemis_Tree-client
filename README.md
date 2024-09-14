@@ -1,7 +1,9 @@
 #### Chemis-Tree
 
 Chemis-Tree is an app to make learning about chemistry more fun, and reach a bigger audience as its such an important study to our everyday lives
-Deployed app - 
+
+Deployed app -
+
 Project Board - https://github.com/users/braydenbubp/projects/8/views/1
 
 A sample user will look like {id: 1, name: "name", uid: "auth key"} And that user will be able to -
