@@ -11,7 +11,7 @@ import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="nav">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>Chemis-Tree</Navbar.Brand>
