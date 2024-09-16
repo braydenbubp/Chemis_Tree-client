@@ -15,7 +15,7 @@ export default function PeriodicTable({ onElementClick, selectElements, isCompou
   }, []);
 
   return (
-    <div id="container">
+    <div id="periodic-container">
       <div id="table">
         {elements.map((element) => (
           <ElementCard

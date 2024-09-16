@@ -18,10 +18,21 @@ export default function Compounds() {
   }, []);
 
   return (
-    <div>
+    <div className="display">
       {compounds.map((compound) => (
         <CompoundCard key={compound.id} compoundObj={compound} onUpdate={getCompounds} />
       ))}
+      <style>
+        {`
+          .display {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(${150}px, 1fr));
+            gap: 12px;
+            padding: 16px;
+          }
+        
+        `}
+      </style>
     </div>
   );
 }
