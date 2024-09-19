@@ -61,7 +61,7 @@ export default function TreeForm({ treeObj }) {
       uid: user.uid,
     };
     if (treeObj?.id) {
-      updateTree(treeObj.id, payload).then(() => router.push('/trees'));
+      updateTree(treeObj.id, payload).then(() => router.push(`/tree/${treeObj?.id}`));
     } else {
       createTree(payload).then(() => router.push('/trees'));
     }

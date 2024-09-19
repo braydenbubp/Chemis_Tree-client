@@ -14,6 +14,7 @@ export default function CompoundDetail({ compoundId }) {
   const [loading, setLoading] = useState(true);
   const [cidData, setCidData] = useState(null);
   const [description, setDescription] = useState('');
+  const [bondCounts, setBondCounts] = useState({});
 
   const router = useRouter();
 
@@ -61,6 +62,26 @@ export default function CompoundDetail({ compoundId }) {
     }
   };
 
+  const getBondTypeName = (order) => {
+    switch (order) {
+      case 1: return 'Single';
+      case 2: return 'Double';
+      case 3: return 'Triple';
+      default: return 'Unknown';
+    }
+  };
+
+  useEffect(() => {
+    if (compound && Array.isArray(compound.bonds)) {
+      const counts = compound.bonds.reduce((acc, bond) => {
+        const bondType = getBondTypeName(bond.order);
+        acc[bondType] = (acc[bondType] || 0) + 1;
+        return acc;
+      }, {});
+      setBondCounts(counts);
+    }
+  }, [compound]);
+
   useEffect(() => {
     if (compoundId) {
       getOneCompound();
@@ -94,44 +115,72 @@ export default function CompoundDetail({ compoundId }) {
   const imgSrc = getImgSrc();
 
   return (
-    <>
-      <div>
-        <h1>{compound?.iupac_name}</h1>
-        <h1>{compound?.molecular_formula}</h1>
-        <h2>{compound?.molecular_weight}</h2>
-        <div className="compound-img">
-          {imgSrc && (
-          <Image
-            src={imgSrc}
-            alt={`Structure of ${compound.iupac_name}`}
-            width={300}
-            height={300}
-            layout="responsive"
-            objectFit="contain"
-            unoptimized
-          />
-          )}
+    <div className="compound-detail" style={{ textAlign: 'center' }}>
+      <h1 style={{ marginBottom: '20px' }}>{compound?.molecular_formula}</h1>
 
+      <div className="compound-image-container" style={{ marginBottom: '20px' }}>
+        <div
+          className="compound-img"
+          style={{
+            width: '200px',
+            height: '200px',
+            position: 'relative',
+            margin: '0 auto',
+          }}
+        >
+          {imgSrc && (
+            <Image
+              src={imgSrc}
+              alt={`Structure of ${compound.iupac_name}`}
+              layout="fill"
+              objectFit="contain"
+              unoptimized
+            />
+          )}
         </div>
-        {compound?.info_link && (
-          <div className="linkInfo">
-            <h4>Information on this compound</h4>
-          </div>
-        )}
-        {cidData && (
-          <p><strong>InChI:</strong> {cidData.props.find((p) => p.urn.label === 'InChI')?.value?.sval}</p>
-        )}
-        {description && (
-          <p>{description}</p>
-        )}
-        <a href={compound?.info_link}>For more information go here!</a>
       </div>
 
-      <>
-        <Button id="del-compound" onClick={deleteThisCompound}>
+      <h2 style={{ marginBottom: '30px' }}>{compound?.iupac_name}</h2>
+      <div className="bond-summary">
+        {Array.isArray(compound.bonds) && compound.bonds.length > 0 ? (
+          <div className="bond-summary">
+            <h3>Bond Summary</h3>
+            <ul>
+              {Object.entries(bondCounts).map(([bondType, count]) => (
+                <li key={bondType}>
+                  {bondType} bonds: {count}
+                </li>
+              ))}
+            </ul>
+            <p>Total bonds: {compound.bonds.length}</p>
+          </div>
+        ) : (
+          <div>No bond information available.</div>
+        )}
+      </div>
+
+      <div style={{ textAlign: 'left', maxWidth: '600px', margin: '0 auto' }}>
+        <h3 style={{ marginBottom: '20px' }}>Molecular Weight: {compound?.molecular_weight}</h3>
+
+        {cidData && (
+          <p style={{ marginBottom: '20px' }}><strong>InChI:</strong> {cidData.props.find((p) => p.urn.label === 'InChI')?.value?.sval}</p>
+        )}
+
+        {description && (
+          <p style={{ marginBottom: '20px' }}>{description}</p>
+        )}
+
+        {compound?.info_link && (
+          <div className="linkInfo" style={{ marginBottom: '20px' }}>
+            <h4>Information on this compound</h4>
+            <a href={compound?.info_link}>For more information go here!</a>
+          </div>
+        )}
+
+        <Button id="del-compound" onClick={deleteThisCompound} style={{ marginTop: '20px' }}>
           Delete
         </Button>
-      </>
-    </>
+      </div>
+    </div>
   );
 }

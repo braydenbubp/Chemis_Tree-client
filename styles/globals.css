@@ -1,7 +1,10 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 
 html,
-body {
+body, 
+#__next {
+  height: 100%;
+  width: 100%;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -18,7 +21,47 @@ a {
 }
 
 body {
-  background-color: orangered;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+#__next {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#homePage {
+  background-image: url("https://wallpapers.com/images/hd/chemistry-pictures-86q3rydby1doqvs0.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.navLink {
+  color: white;
+}
+
+.signOut {
+  color: red;
+}
+
+.signOut:hover {
+  text-decoration: underline;
+}
+
+.navLink:hover {
+  text-decoration: underline;
 }
 
 #container {
@@ -48,6 +91,26 @@ body {
   /* margin-top: 100px;
   margin-left: -100px; */
 } 
+
+.trees {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.elementDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
 
 .element {
   display: flex;

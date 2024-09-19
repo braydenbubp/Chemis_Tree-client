@@ -30,7 +30,6 @@ export default function Compounds() {
             gap: 12px;
             padding: 16px;
           }
-        
         `}
       </style>
     </div>
