@@ -19,7 +19,7 @@ export default function ElementDetail({ elementId }) {
   }, []);
 
   return (
-    <div>
+    <div className="elementDetails">
       <h1>{element?.name}</h1>
       <h1>{element?.symbol}</h1>
       <h2>Atomic mass: {element?.mass}</h2>
