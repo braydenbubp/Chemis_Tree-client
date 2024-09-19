@@ -109,7 +109,7 @@ export default function TreeForm({ treeObj }) {
         </FloatingLabel>
 
         <Button onClick={() => setShowModal(true)} className="mb-3">Select Compounds you want to add to this tree</Button>
-        <div>Selected Compounds: {input.compounds.length}</div>
+        <div style={{ color: 'white' }}>Selected Compounds: {input.compounds.length}</div>
 
         <Button type="submit">{treeObj?.id ? 'Update' : 'Create'} Tree</Button>
       </Form>

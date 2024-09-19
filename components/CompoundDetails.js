@@ -14,7 +14,7 @@ export default function CompoundDetail({ compoundId }) {
   const [loading, setLoading] = useState(true);
   const [cidData, setCidData] = useState(null);
   const [description, setDescription] = useState('');
-  const [bondCounts, setBondCounts] = useState({});
+  // const [bondCounts, setBondCounts] = useState({});
 
   const router = useRouter();
 
@@ -62,25 +62,25 @@ export default function CompoundDetail({ compoundId }) {
     }
   };
 
-  const getBondTypeName = (order) => {
-    switch (order) {
-      case 1: return 'Single';
-      case 2: return 'Double';
-      case 3: return 'Triple';
-      default: return 'Unknown';
-    }
-  };
+  // const getBondTypeName = (order) => {
+  //   switch (order) {
+  //     case 1: return 'Single';
+  //     case 2: return 'Double';
+  //     case 3: return 'Triple';
+  //     default: return 'Unknown';
+  //   }
+  // };
 
-  useEffect(() => {
-    if (compound && Array.isArray(compound.bonds)) {
-      const counts = compound.bonds.reduce((acc, bond) => {
-        const bondType = getBondTypeName(bond.order);
-        acc[bondType] = (acc[bondType] || 0) + 1;
-        return acc;
-      }, {});
-      setBondCounts(counts);
-    }
-  }, [compound]);
+  // useEffect(() => {
+  //   if (compound && Array.isArray(compound.bonds)) {
+  //     const counts = compound.bonds.reduce((acc, bond) => {
+  //       const bondType = getBondTypeName(bond.order);
+  //       acc[bondType] = (acc[bondType] || 0) + 1;
+  //       return acc;
+  //     }, {});
+  //     setBondCounts(counts);
+  //   }
+  // }, [compound]);
 
   useEffect(() => {
     if (compoundId) {
@@ -116,7 +116,7 @@ export default function CompoundDetail({ compoundId }) {
 
   return (
     <div className="compound-detail" style={{ textAlign: 'center' }}>
-      <h1 style={{ marginBottom: '20px' }}>{compound?.molecular_formula}</h1>
+      <h1 style={{ marginBottom: '20px', color: 'white' }}>{compound?.molecular_formula}</h1>
 
       <div className="compound-image-container" style={{ marginBottom: '20px' }}>
         <div
@@ -140,8 +140,8 @@ export default function CompoundDetail({ compoundId }) {
         </div>
       </div>
 
-      <h2 style={{ marginBottom: '30px' }}>{compound?.iupac_name}</h2>
-      <div className="bond-summary">
+      <h2 style={{ marginBottom: '30px', color: 'white' }}>{compound?.iupac_name}</h2>
+      {/* <div className="bond-summary">
         {Array.isArray(compound.bonds) && compound.bonds.length > 0 ? (
           <div className="bond-summary">
             <h3>Bond Summary</h3>
@@ -157,21 +157,24 @@ export default function CompoundDetail({ compoundId }) {
         ) : (
           <div>No bond information available.</div>
         )}
-      </div>
+      </div> */}
 
-      <div style={{ textAlign: 'left', maxWidth: '600px', margin: '0 auto' }}>
-        <h3 style={{ marginBottom: '20px' }}>Molecular Weight: {compound?.molecular_weight}</h3>
+      <div style={{
+        textAlign: 'left', maxWidth: '600px', margin: '0 auto', color: 'white',
+      }}
+      >
+        <h3 style={{ marginBottom: '20px', color: 'white' }}>Molecular Weight: {compound?.molecular_weight}</h3>
 
         {cidData && (
-          <p style={{ marginBottom: '20px' }}><strong>InChI:</strong> {cidData.props.find((p) => p.urn.label === 'InChI')?.value?.sval}</p>
+          <p style={{ marginBottom: '20px', color: 'white' }}><strong>InChI:</strong> {cidData.props.find((p) => p.urn.label === 'InChI')?.value?.sval}</p>
         )}
 
         {description && (
-          <p style={{ marginBottom: '20px' }}>{description}</p>
+          <p style={{ marginBottom: '20px', color: 'white' }}>{description}</p>
         )}
 
         {compound?.info_link && (
-          <div className="linkInfo" style={{ marginBottom: '20px' }}>
+          <div className="linkInfo" style={{ marginBottom: '20px', color: 'white' }}>
             <h4>Information on this compound</h4>
             <a href={compound?.info_link}>For more information go here!</a>
           </div>
