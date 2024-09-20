@@ -3,7 +3,7 @@ import 'firebase/auth';
 // import { clientCredentials } from './client';
 
 const checkUser = (uid) => new Promise((resolve, reject) => {
-  fetch('http://localhost:8000/checkuser', {
+  fetch('http://chemis-tree-290c6a7d08a8.herokuapp.com/checkuser', {
     method: 'POST',
     body: JSON.stringify({
       uid,
@@ -18,7 +18,7 @@ const checkUser = (uid) => new Promise((resolve, reject) => {
 });
 
 const registerUser = (userInfo) => new Promise((resolve, reject) => {
-  fetch('http://localhost:8000/register', {
+  fetch('http://chemis-tree-290c6a7d08a8.herokuapp.com/register', {
     method: 'POST',
     body: JSON.stringify(userInfo),
     headers: {

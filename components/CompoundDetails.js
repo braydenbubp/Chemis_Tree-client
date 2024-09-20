@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import Image from 'next/image';
 import { deleteCompound, getSingleCompound } from '../api/compounds';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://chemis-tree-290c6a7d08a8.herokuapp.com';
 const PUBCHEM_API_BASE = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug';
 const PUBCHEM_VIEW_API_BASE = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound';
 
