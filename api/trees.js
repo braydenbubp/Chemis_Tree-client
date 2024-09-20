@@ -12,6 +12,18 @@ const getAllTrees = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getTreesByUser = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/trees?uid=${uid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 const getSingleTree = (id) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/trees/${id}`, {
     method: 'GET',
@@ -63,6 +75,7 @@ const deleteTree = (id) => new Promise((resolve, reject) => {
 export {
   getAllTrees,
   getSingleTree,
+  getTreesByUser,
   createTree,
   updateTree,
   deleteTree,
