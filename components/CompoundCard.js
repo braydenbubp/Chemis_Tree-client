@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://chemis-tree-290c6a7d08a8.herokuapp.com';
 
 export default function CompoundCard({ compoundObj }) {
   const getImgSrc = () => {

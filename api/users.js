@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:8000';
+const endpoint = 'https://chemis-tree-290c6a7d08a8.herokuapp.com';
 
 const getSingleUser = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users/${uid}`, {
