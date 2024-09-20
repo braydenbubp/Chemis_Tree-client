@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { getAllTrees } from '../api/trees';
+import { getTreesByUser } from '../api/trees';
 import TreeCard from '../components/TreeCard';
+import { useAuth } from '../utils/context/authContext';
 
 export default function Trees() {
   const [trees, setTrees] = useState([]);
   const router = useRouter();
+  const { user } = useAuth();
 
   const getUserTrees = () => {
-    getAllTrees().then(setTrees);
+    getTreesByUser(user.uid).then(setTrees);
   };
 
   useEffect(() => {
     getUserTrees();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
